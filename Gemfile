@@ -33,6 +33,9 @@ gem 'jbuilder', '~> 2.5'
 # Token based authentication for Rails JSON APIs.
 gem 'devise_token_auth'
 
+#Classier solution for file uploads for Rails
+gem 'carrierwave'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
