@@ -36,6 +36,9 @@ gem 'devise_token_auth'
 #Classier solution for file uploads for Rails
 gem 'carrierwave'
 
+gem 'rack-cors', :require => 'rack/cors'
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
