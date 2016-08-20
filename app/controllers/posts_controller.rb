@@ -1,6 +1,9 @@
 class PostsController < ApplicationController
 
   def index
-    render json: {posts: Post.all}
+    render json: Post.all, adapter: :json, root: 'posts'
+  end
+
+  def home
   end
 end
