@@ -60,3 +60,4 @@ gem 'ffaker'
 
 #ActiveModel::Serializer implementation and Rails hooks
 gem 'active_model_serializers'
+gem 'mini_magick'

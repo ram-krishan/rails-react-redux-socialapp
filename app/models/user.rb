@@ -5,5 +5,7 @@ class User < ActiveRecord::Base
           :confirmable#, :omniauthable
   include DeviseTokenAuth::Concerns::User
 
+  has_many :comments, foreign_key: :commenter_id
+  has_many :posts
   #mount_uploader :image, AvatarUploader
 end
