@@ -6,7 +6,10 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+require_relative '../lib/bad_multipart_form_data_sanitizer'
+
 module ReactReduxSocialapp
+
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -21,5 +24,8 @@ module ReactReduxSocialapp
           :methods => [:get, :post, :options, :delete, :put]
       end
     end
+
+    config.middleware.insert_before Rack::Runtime, BadMultipartFormDataSanitizer
+    #config.middleware.use BadMultipartFormDataSanitizer
   end
 end

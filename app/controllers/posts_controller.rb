@@ -11,11 +11,14 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = current_user.posts.new(post_params)
+    post = current_user.posts.create(post_params)
+
+    # render json: {success: post.valid?, data: ( post.valid? ? post : post.errors.full_messages )}
+    post.success = post.valid?
     if post.save
       render json: post
     else
-      render json: {errors: 'error on submit form'}
+      render json: post.errors.messages
     end
   end
 
