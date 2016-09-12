@@ -13,7 +13,6 @@ class PostsController < ApplicationController
   def create
     post = current_user.posts.create(post_params)
 
-    # render json: {success: post.valid?, data: ( post.valid? ? post : post.errors.full_messages )}
     post.success = post.valid?
     if post.save
       render json: post
@@ -23,6 +22,17 @@ class PostsController < ApplicationController
   end
 
   def home
+  end
+
+  def post_like_unlike
+    post = Post.find(params[:id])
+    if post.is_like?(current_user)
+      post.dislike_post(current_user)
+    else
+      post.like_post(current_user)
+    end
+
+    render json: post
   end
 
   private
