@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
-  #before_action :authenticate_user!
+  before_action :authenticate_user!, except: :feeds
   
   def index
-    render json: Post.all, adapter: :json, root: 'posts'
-    #render json: current_user.posts, adapter: :json, root: 'posts'
+    # render json: Post.all, adapter: :json, root: 'posts'
+    render json: current_user.posts, adapter: :json, root: 'posts'
   end
 
   def public_post
@@ -22,6 +22,7 @@ class PostsController < ApplicationController
   end
 
   def home
+    
   end
 
   def post_like_unlike
@@ -33,6 +34,10 @@ class PostsController < ApplicationController
     end
 
     render json: post
+  end
+
+  def feeds
+    render json: Post.all.all_except(current_user), adapter: :json, root: 'feeds'
   end
 
   private
